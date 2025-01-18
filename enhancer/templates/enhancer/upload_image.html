@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Enhancement App</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'enhancer/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Image Enhancement App</h1>
+    </header>
+
+    <div class="container">
+        <h2>Upload Your Image</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" name="upload">Upload Image</button>
+        </form>
+
+        {% if uploaded_file_url %}
+            <div class="image-display-container">
+                <div class="image-display">
+                    <h3>Original Image</h3>
+                    <img src="{{ uploaded_file_url }}" alt="Uploaded Image" width="300">
+                </div>
+
+                <div class="image-display">
+                    <h3>Enhanced Image</h3>
+                    <img src="{{ enhanced_file_url }}" alt="Enhanced Image" width="300">
+                    <br>
+                    <a href="{{ enhanced_file_url }}" download>
+                        <button>Download Enhanced Image</button>
+                    </a>
+                </div>
+            </div>
+
+            <h3>Apply Custom Enhancements</h3>
+            <form method="POST">
+                {% csrf_token %}
+                {{ enhancement_form.as_p }}
+                <button type="submit" name="apply_changes">Apply Changes</button>
+            </form>
+        {% endif %}
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Image Enhancement App. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
