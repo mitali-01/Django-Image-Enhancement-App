@@ -16,7 +16,7 @@ A web-based application built with Django that allows users to upload an image, 
 - **Python**: Backend programming language.
 - **HTML/CSS**: For structuring and styling the frontend.
 - **JavaScript (optional)**: For any dynamic frontend interactions (if added in the future).
-- **TensorFlow** (or other image processing libraries): For the actual image enhancement (e.g., applying sharpness, contrast, and blur).
+- **OpoenCV** (or other image processing libraries): For the actual image enhancement (e.g., applying sharpness, contrast, and blur).
 
 ## Installation
 
